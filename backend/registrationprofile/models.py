@@ -25,9 +25,9 @@ class RegistrationProfile(models.Model):
     def __str__(self):
         return f'{self.id} - Reg profile for {self.user.username}'
 
+
 @receiver(post_save, sender=User)
 def callback_function(sender, instance, **kwargs):
     profile, created = RegistrationProfile.objects.get_or_create(user=instance)
     if created:
         profile.save()
-

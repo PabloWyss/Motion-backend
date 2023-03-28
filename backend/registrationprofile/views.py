@@ -7,11 +7,10 @@ from registrationprofile.serializers import RegistrationSerializer
 from rest_framework.permissions import AllowAny
 
 from django.contrib.auth import get_user_model
-
 from user.serializer import UserUpdateSerializer
-User = get_user_model()
 from django.contrib.auth.hashers import make_password
 
+User = get_user_model()
 
 class RegistrationView(ListCreateAPIView):
     serializer_class = RegistrationSerializer
@@ -23,6 +22,7 @@ class RegistrationView(ListCreateAPIView):
         user = User.objects.create(**data)
         user.save()
         validation_code=RegistrationProfile.objects.filter(user_id=user.id).first().validation_code
+
         send_mail(
             'Registration Motion',
             f'Your code is {validation_code}.',
@@ -31,6 +31,7 @@ class RegistrationView(ListCreateAPIView):
             fail_silently=False,
         )
         return JsonResponse({'Email was sent to ': f'{data["email"]}'}, status=201)
+
 
 class RegistrationValidationView(UpdateAPIView):
     serializer_class = UserUpdateSerializer
@@ -49,10 +50,3 @@ class RegistrationValidationView(UpdateAPIView):
             return JsonResponse({'Success': "User Added"}, status=201)
         else:
             return JsonResponse({'Error': "invalid information"}, status=201)
-
-
-
-
-
-
-
