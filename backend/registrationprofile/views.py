@@ -22,7 +22,7 @@ class RegistrationView(ListCreateAPIView):
         data = request.data
         user = User.objects.create(**data)
         user.save()
-        validation_code=RegistrationProfile.objects.filter(user_id = user.id).first().validation_code
+        validation_code = RegistrationProfile.objects.filter(user_id=user.id).first().validation_code
 
         send_mail(
             'Registration Motion',
