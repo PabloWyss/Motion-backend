@@ -2,6 +2,10 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
+def user_directory_path(instance, filename):
+    return f'users/{instance.id}/{filename}'
+
+
 class User(AbstractUser):
     # Field used for authentication
     USERNAME_FIELD = 'email'
@@ -11,6 +15,7 @@ class User(AbstractUser):
 
     email = models.EmailField(unique=True)
     followed_by = models.ManyToManyField(to="User", related_name="following", blank=True)
+    avatar = models.ImageField(upload_to=user_directory_path, null=True, blank=True)
 
     def __str__(self):
         return self.username
