@@ -20,18 +20,21 @@ class RegistrationView(ListCreateAPIView):
 
     def post(self, request, *args, **kwargs):
         data = request.data
-        user = User.objects.create(**data)
-        user.save()
-        validation_code = RegistrationProfile.objects.filter(user_id=user.id).first().validation_code
+        if User.objects.filter(email=data['email']).exists():
+            return JsonResponse({'Error' : 'Email already exists'})
+        else:
+            user = User.objects.create(**data)
+            user.save()
+            validation_code = RegistrationProfile.objects.filter(user_id=user.id).first().validation_code
 
-        send_mail(
-            'Registration Motion',
-            f'Your code is {validation_code}.',
-            f'{data["email"]}',
-            ['pablopruebadev@gmail.com'],
-            fail_silently=False,
-        )
-        return JsonResponse({'Email was sent to ': f'{data["email"]}'}, status=201)
+            send_mail(
+                'Registration Motion',
+                f'Your code is {validation_code}.',
+                'pablopruebadev@gmail.com',
+                [f'{data["email"]}'],
+                fail_silently=False,
+            )
+            return JsonResponse({'Email was sent to ': f'{data["email"]}'}, status=201)
 
 
 class RegistrationValidationView(UpdateAPIView):
