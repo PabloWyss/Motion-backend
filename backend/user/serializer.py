@@ -7,7 +7,13 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username']
+        fields = ['id', 'username', 'first_name', 'last_name']
+
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
 
 
 class FollowersSerializer(serializers.ModelSerializer):
