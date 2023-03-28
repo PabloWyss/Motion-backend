@@ -3,18 +3,18 @@ import random
 
 from django.core.mail import send_mail
 from django.http import JsonResponse
-from rest_framework.generics import ListAPIView, ListCreateAPIView
+from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
+from rest_framework.mixins import UpdateModelMixin
+
 from registrationprofile.models import RegistrationProfile
 from registrationprofile.serializers import RegistrationSerializer
 from rest_framework.permissions import AllowAny
 
 from django.contrib.auth import get_user_model
 
-User = get_user_model()
+from user.serializer import UserUpdateSerializer
 
-def code_generator(length=5):
-    numbers = '0123456789'
-    return ''.join(random.choice(numbers) for _ in range(length))
+User = get_user_model()
 
 
 class RegistrationView(ListCreateAPIView):
@@ -35,6 +35,23 @@ class RegistrationView(ListCreateAPIView):
             fail_silently=False,
         )
         return JsonResponse({'Email was sent to ': f'{data["email"]}'}, status=201)
+
+class RegistrationValidationView(UpdateAPIView):
+    serializer_class = UserUpdateSerializer
+    permission_classes = [AllowAny]
+    queryset = User.objects.all()
+
+    def patch(self, request, *args, **kwargs):
+        email_request = request.data['email']
+        instance = RegistrationProfile.objects.get(user__email=email_request)
+        user = User.objects.get(email=email_request)
+        if instance.validation_code == request.data['code']:
+            serializer = self.get_serializer(user, data=request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return JsonResponse({'Email was sent to ': "cool"}, status=201)
+        else:
+            return JsonResponse({'Email was sent to ': "not cool"}, status=201)
 
 
 
