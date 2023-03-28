@@ -1,10 +1,6 @@
-import json
-import random
-
 from django.core.mail import send_mail
 from django.http import JsonResponse
-from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
-from rest_framework.mixins import UpdateModelMixin
+from rest_framework.generics import ListCreateAPIView, UpdateAPIView
 
 from registrationprofile.models import RegistrationProfile
 from registrationprofile.serializers import RegistrationSerializer
@@ -13,8 +9,8 @@ from rest_framework.permissions import AllowAny
 from django.contrib.auth import get_user_model
 
 from user.serializer import UserUpdateSerializer
-
 User = get_user_model()
+from django.contrib.auth.hashers import make_password
 
 
 class RegistrationView(ListCreateAPIView):
@@ -46,12 +42,13 @@ class RegistrationValidationView(UpdateAPIView):
         instance = RegistrationProfile.objects.get(user__email=email_request)
         user = User.objects.get(email=email_request)
         if instance.validation_code == request.data['code']:
+            request.data['password'] = make_password(request.data['password'])
             serializer = self.get_serializer(user, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
             serializer.save()
-            return JsonResponse({'Email was sent to ': "cool"}, status=201)
+            return JsonResponse({'Success': "User Added"}, status=201)
         else:
-            return JsonResponse({'Email was sent to ': "not cool"}, status=201)
+            return JsonResponse({'Error': "invalid information"}, status=201)
 
 
 
