@@ -21,7 +21,7 @@ class RegistrationView(ListCreateAPIView):
     def post(self, request, *args, **kwargs):
         data = request.data
         if User.objects.filter(email=data['email']).exists():
-            return JsonResponse({'Error' : 'Email already exists'})
+            return JsonResponse({'Error': 'Email already exists'})
         else:
             user = User.objects.create(**data)
             user.save()
