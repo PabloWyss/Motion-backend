@@ -11,6 +11,7 @@ class User(AbstractUser):
 
     email = models.EmailField(unique=True)
     followed_by = models.ManyToManyField(to="User", related_name="following", blank=True)
+    username = models.TextField(unique=False)
 
     def __str__(self):
         return self.username
