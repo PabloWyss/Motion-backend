@@ -14,6 +14,8 @@ class User(AbstractUser):
     # Additional fields required when using createsuperuser (USERNAME_FIELD and passwords are always required)
     REQUIRED_FIELDS = ['username']
 
+    # id
+    # username
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -24,8 +26,8 @@ class User(AbstractUser):
     about_me = models.CharField(max_length=100, null=True, blank=True)
     job = models.CharField(max_length=50, null=True, blank=True)
     things_user_likes = models.CharField(max_length=200, null=True, blank=True)
-    # logged_in_user_followers = models.ManyToManyField('self', symmetrical=False, related_name='following_users')
-    # logged_in_user_following = models.ManyToManyField('self', symmetrical=False, related_name='logged_in_user_followers')
+    logged_in_user_followers = models.ManyToManyField('self', symmetrical=False, related_name='following')
+    logged_in_user_following = models.ManyToManyField('self', symmetrical=False, related_name='followers')
 
 
 def __str__(self):
