@@ -29,6 +29,7 @@ class FollowersSerializer(serializers.ModelSerializer):
 class FriendRequestSerializer(serializers.ModelSerializer):
     from_user_id = UserSerializer(read_only=True)
     to_user_id = UserSerializer(read_only=True)
+
     class Meta:
         model = FriendRequest
         fields = '__all__'

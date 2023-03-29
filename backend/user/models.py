@@ -35,6 +35,7 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+
 class FriendRequest(models.Model):
     STATUSTYPES = [
         ('A', 'Accepted'),
@@ -43,5 +44,5 @@ class FriendRequest(models.Model):
     ]
     created = models.DateTimeField(auto_now_add=True)
     status = models.CharField(choices=STATUSTYPES, max_length=50)
-    from_user = models.ForeignKey(User,on_delete=models.CASCADE, related_name="sent_fr")
+    from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sent_fr")
     to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="received_fr")
