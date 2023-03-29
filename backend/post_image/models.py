@@ -1,14 +1,17 @@
 from django.db import models
 
-class Attachment(DatetimeCreatedMixin, AuthorMixin):
-    class AttachmentType(models.TextChoices):
-        PHOTO = "Photo", _("Photo")
-        VIDEO = "Video", _("Video")
+from post.models import Post
 
-    file = models.ImageField('Attachment', upload_to='attachments/')
-    file_type = models.CharField('File type', choices=AttachmentType.choices, max_length=10)
 
-    post_images = models.ForeignKey(to='Post', on_delete=models.CASCADE, verbose_name='post')
+def post_image_directory_path(instance, filename):
+    return f"posts/{instance.id}/{filename}"
+
+
+class Attachment(models.Model):
+
+    post = models.ForeignKey(to=Post, on_delete=models.CASCADE, related_name='images')
+
+    image = models.ImageField(upload_to=post_image_directory_path, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Attachment'
