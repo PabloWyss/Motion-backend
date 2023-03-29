@@ -12,6 +12,14 @@ User = get_user_model()
 
 
 # Create your views here.
+
+class MyUserRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+    serializer_class = UserSerializer
+
+    def get_object(self):
+        return self.request.user
+
+
 class UserListView(ListAPIView):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
