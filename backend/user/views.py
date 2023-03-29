@@ -75,7 +75,9 @@ class ToggleFollowUserView(APIView):
 
         if is_following:
             user.logged_in_user_following.remove(target_user)
+            target_user.logged_in_user_followers.remove(user)
             return Response({'status': 'User unfollowed'})
         else:
             user.logged_in_user_following.add(target_user)
+            target_user.logged_in_user_followers.add(user)
             return Response({'status': 'User followed'})
