@@ -4,7 +4,7 @@ from post.models import Post
 
 
 def post_image_directory_path(instance, filename):
-    return f"posts/{instance.id}/{filename}"
+    return f"posts/{instance.post_id}/{filename}"
 
 
 class Attachment(models.Model):
