@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Comment
 from .serializers import CommentSerializer
 
+
 class CommentListCreateView(ListCreateAPIView):
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticated]
@@ -25,4 +26,3 @@ class ListCommentByIdView(ListAPIView):
     def get_queryset(self):
         post_id = self.kwargs['pk']
         return Comment.objects.filter(post_id=post_id)
-

@@ -5,13 +5,10 @@ from post.serializers import PostSerializer
 
 User = get_user_model()
 
+
 class CommentSerializer(serializers.ModelSerializer):
     created_by = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
-
 
     class Meta:
         model = Comment
         fields = ['id', 'text', 'created', 'updated', 'approved', 'created_by', 'post']
-
-
-
