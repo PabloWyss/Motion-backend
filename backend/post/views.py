@@ -101,3 +101,11 @@ class listPostOfGivenUserView(ListAPIView):
     def get_queryset(self):
         user_id = self.kwargs['id']
         return Post.objects.filter(created_by_id=user_id)
+
+
+class ListMyPostsView(ListAPIView):
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return self.request.user.posts.all()
