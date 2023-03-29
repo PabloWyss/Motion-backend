@@ -18,7 +18,7 @@ export  const  GetAll_Post = async (offset) => {
     redirect: 'follow'
   };
   
-  await fetch("https://motion.propulsion-home.ch/backend/api/social/posts/?limit=25&offset="+offset, requestOptions)
+  await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/posts/?limit=25&offset="+offset, requestOptions)
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -39,7 +39,7 @@ export  const  GetAll_Post = async (offset) => {
       redirect: 'follow'
     };
     
-   await fetch("https://motion.propulsion-home.ch/backend/api/social/posts/user/"+UserId+"/?limit=25&offset="+offset, requestOptions)
+   await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/posts/user/"+UserId+"/?limit=25&offset="+offset, requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -71,7 +71,7 @@ export  const  GetAll_Post = async (offset) => {
     redirect: 'follow'
   };
   
-  await fetch("https://motion.propulsion-home.ch/backend/api/social/posts/", requestOptions)
+  await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/posts/", requestOptions)
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -99,7 +99,7 @@ export  const  GetAll_Post = async (offset) => {
   redirect: 'follow'
   };
   
-  await fetch("https://motion.propulsion-home.ch/backend/api/social/posts/"+post_id, requestOptions)
+  await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/posts/"+post_id, requestOptions)
   .then(response => response.json())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -118,7 +118,7 @@ export  const  GetAll_Post = async (offset) => {
     redirect: 'follow'
   };
   
-  await fetch("https://motion.propulsion-home.ch/backend/api/social/posts/?search="+search, requestOptions)
+  await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/posts/?search="+search, requestOptions)
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -140,7 +140,7 @@ export  const  GetAll_Post = async (offset) => {
       redirect: 'follow'
     };
     
-   await fetch("https://motion.propulsion-home.ch/backend/api/social/followers/toggle-follow/"+userid+"/", requestOptions)
+   await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/followers/toggle-follow/"+userid+"/", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -157,7 +157,7 @@ export  const  GetAll_Post = async (offset) => {
       redirect: 'follow'
     };
     
-   await fetch("https://motion.propulsion-home.ch/backend/api/social/followers/following/", requestOptions)
+   await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/followers/following/", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -178,7 +178,7 @@ export  const  GetAll_Post = async (offset) => {
       redirect: 'follow'
     };
     
-   await fetch("https://motion.propulsion-home.ch/backend/api/social/followers/followers/", requestOptions)
+   await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/followers/followers/", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -198,7 +198,7 @@ export  const  GetAll_Post = async (offset) => {
       redirect: 'follow'
     };
     
-   await fetch("https://motion.propulsion-home.ch/backend/api/social/friends/request/"+userid+"/", requestOptions)
+   await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/friends/request/"+userid+"/", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -233,7 +233,7 @@ export const FriendsRequestsStatus = async(type,friend_request_id) => {
       redirect: 'follow'
     };
     
-   await fetch("https://motion.propulsion-home.ch/backend/api/social/friends/requests/"+friend_request_id, requestOptions)
+   await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/friends/requests/"+friend_request_id, requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -252,7 +252,7 @@ export const FriendsRequestsStatus = async(type,friend_request_id) => {
     redirect: 'follow'
   };
   
- await fetch("https://motion.propulsion-home.ch/backend/api/social/friends", requestOptions)
+ await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/friends", requestOptions)
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -275,7 +275,7 @@ export const FriendsRequestsStatus = async(type,friend_request_id) => {
       redirect: 'follow'
     };
     
-   await fetch("https://motion.propulsion-home.ch/backend/api/users/?limit=25&offset="+offset, requestOptions)
+   await fetch("https://motion-team2.propulsion-learn.ch/backend/api/users/?limit=25&offset="+offset, requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -295,7 +295,7 @@ export const FriendsRequestsStatus = async(type,friend_request_id) => {
       redirect: 'follow'
     };
     
-   await fetch("https://motion.propulsion-home.ch/backend/api/users/?limit=25&offset="+offset+"&search="+search, requestOptions)
+   await fetch("https://motion-team2.propulsion-learn.ch/backend/api/users/?limit=25&offset="+offset+"&search="+search, requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -312,7 +312,7 @@ export const FriendsRequestsStatus = async(type,friend_request_id) => {
         redirect: 'follow'
       };
       
-     await fetch("https://motion.propulsion-home.ch/backend/api/users/"+userid, requestOptions)
+     await fetch("https://motion-team2.propulsion-learn.ch/backend/api/users/"+userid, requestOptions)
         .then(response => response.json())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
@@ -335,7 +335,7 @@ export const FriendsRequestsStatus = async(type,friend_request_id) => {
       redirect: 'follow'
     };
   
-  await fetch("https://motion.propulsion-home.ch/backend/api/users/me/", requestOptions)
+  await fetch("https://motion-team2.propulsion-learn.ch/backend/api/users/me/", requestOptions)
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -355,7 +355,7 @@ export const FriendsRequestsStatus = async(type,friend_request_id) => {
       redirect: 'follow'
     };
   
-  await fetch("https://motion.propulsion-home.ch/backend/api/social/posts/likes/", requestOptions)
+  await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/posts/likes/", requestOptions)
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -373,7 +373,7 @@ export const FriendsRequestsStatus = async(type,friend_request_id) => {
       redirect: 'follow'
     };
   
-  await fetch("https://motion.propulsion-home.ch/backend/api/social/posts/friends/", requestOptions)
+  await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/posts/friends/", requestOptions)
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -392,7 +392,7 @@ export const FriendsRequestsStatus = async(type,friend_request_id) => {
       redirect: 'follow'
     };
   
-  await fetch("https://motion.propulsion-home.ch/backend/api/social/posts/following/", requestOptions)
+  await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/posts/following/", requestOptions)
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));

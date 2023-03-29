@@ -29,7 +29,7 @@ function ProfileComp() {
       headers: myHeaders,
       redirect: "follow",
     };
-    await fetch("https://motion.propulsion-home.ch/backend/api/users/" + userID, requestOptions)
+    await fetch("https://motion-team2.propulsion-learn.ch/backend/api/users/" + userID, requestOptions)
       .then((response) => response.json())
       .then((result) => setUserdata(result))
       .catch((error) => console.log("error", error));
@@ -49,7 +49,7 @@ function ProfileComp() {
       headers: myHeaders,
       redirect: "follow",
     };
-    await fetch("https://motion.propulsion-home.ch/backend/api/users/me/", requestOptions)
+    await fetch("https://motion-team2.propulsion-learn.ch/backend/api/users/me/", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         dispatch(setCurrentUser(result));

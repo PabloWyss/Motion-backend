@@ -67,7 +67,7 @@ const SearchAndFilterBar = () => {
       redirect: 'follow'
     };
     
-    fetch("https://motion.propulsion-home.ch/backend/api/social/posts/likes/", requestOptions)
+    fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/posts/likes/", requestOptions)
       .then(response => response.json())
       //.then(result => dispatch(setpostFilter(result.results)))
       .then(result => dispatch(setpostsFilter(result.results)))

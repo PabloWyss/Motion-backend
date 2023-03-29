@@ -1,8 +1,10 @@
 from rest_framework import serializers
-from registrationprofile.models import RegistrationProfile
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class RegistrationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = RegistrationProfile
-        fields = ['validation_code']
+        model = User
+        fields = '__all__'

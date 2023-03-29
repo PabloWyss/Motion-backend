@@ -23,7 +23,7 @@ const OwnPosts = () => {
     };
 
     await fetch(
-      "https://motion.propulsion-home.ch/backend/api/social/posts/me/?limit=10&offset=" +
+      "https://motion-team2.propulsion-learn.ch/backend/api/social/posts/me/?limit=10&offset=" +
         offset,
       requestOptions
     )
