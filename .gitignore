@@ -9,7 +9,8 @@ Django #
 *.pyc
 __pycache__
 db.sqlite3
-media
+media-files
+static-files
 
 # Backup files #
 *.bak

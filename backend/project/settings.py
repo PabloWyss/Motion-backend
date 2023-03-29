@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'post',
+    'post_image',
     'registrationprofile',
     'user',
 
