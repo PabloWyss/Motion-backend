@@ -136,3 +136,13 @@ class FriendsListView(ListAPIView):
 
     def get_queryset(self):
         return self.request.user.befriended_by.all()
+
+
+class FriendsRequestsListView(ListAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        friend_requests_received = FriendRequest.objects.filter(Q(to_user_id=self.request.user.id) & Q(status="P")).all()
+        id_list = [obj.from_user_id for obj in friend_requests_received]
+        return User.objects.filter(id__in=id_list).all()
