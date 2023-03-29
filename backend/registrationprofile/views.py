@@ -29,7 +29,7 @@ class RegistrationView(ListCreateAPIView):
             send_mail(
                 'Registration Motion',
                 f'Your code is {validation_code}.',
-                'pablopruebadev@gmail.com',
+                'motionteam2zh@gmail.com',
                 [f'{data["email"]}'],
                 fail_silently=False,
             )
