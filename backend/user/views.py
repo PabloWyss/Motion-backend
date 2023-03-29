@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from user.models import FriendRequest
-from user.permissions import IsNotSameUser, IsOnlyAuthenticatedUser
+from user.permissions import IsNotSameUser, IsOnlyAuthenticatedUser, IsSameUser
 from user.serializer import UserSerializer, UserUpdateSerializer, FriendRequestSerializer
 from django.contrib.auth import get_user_model
 from django.db.models import Q
@@ -100,7 +100,6 @@ class ToggleFriendRequestView(APIView):
 
     def post(self, request, id):
         target_user_id = id
-        target_user = User.objects.filter(id=target_user_id).first()
         user = request.user
         friend_request_exist = FriendRequest.objects.filter(Q(from_user_id=user.id) & Q(to_user_id=target_user_id)).exists()
         if friend_request_exist:

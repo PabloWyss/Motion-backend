@@ -1,8 +1,8 @@
 from django.urls import path
 
 from user.views import UserListView, UserRetrieveUpdateDestroyView, UserSearchView, ToggleFollowUserView, \
-    FollowerListView, FollowingListView, MyUserRetrieveUpdateDeleteView
-    FollowerListView, FollowingListView, ToggleFriendRequestView, UpdateFriendRequestView, FriendsListView
+    FollowerListView, FollowingListView, MyUserRetrieveUpdateDeleteView, ToggleFriendRequestView, \
+    UpdateFriendRequestView, FriendsListView
 
 urlpatterns = [
     # backend/api/users/
