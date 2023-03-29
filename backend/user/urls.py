@@ -1,7 +1,8 @@
 from django.urls import path
 
 from user.views import UserListView, UserRetrieveUpdateDestroyView, UserSearchView, ToggleFollowUserView, \
-    FollowerListView, FollowingListView, MyUserRetrieveUpdateDeleteView
+    FollowerListView, FollowingListView, MyUserRetrieveUpdateDeleteView, ToggleFriendRequestView, \
+    UpdateFriendRequestView, FriendsListView
 
 urlpatterns = [
     # backend/api/users/
@@ -12,5 +13,8 @@ urlpatterns = [
     # backend/api/social/
     path('followers/toggle-follow/<int:id>/', ToggleFollowUserView.as_view()),
     path('followers/followers/', FollowerListView.as_view()),
-    path('followers/following/', FollowingListView.as_view())
+    path('followers/following/', FollowingListView.as_view()),
+    path('friends/request/<int:id>/', ToggleFriendRequestView.as_view()),
+    path('friends/requests/<int:id>/', UpdateFriendRequestView.as_view()),
+    path('friends/', FriendsListView.as_view())
 ]

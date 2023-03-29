@@ -4,9 +4,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from user.models import FriendRequest
 from user.permissions import IsNotSameUser, IsOnlyAuthenticatedUser, IsSameUser
-from user.serializer import UserSerializer, UserUpdateSerializer
+from user.serializer import UserSerializer, UserUpdateSerializer, FriendRequestSerializer
 from django.contrib.auth import get_user_model
+from django.db.models import Q
 
 User = get_user_model()
 
@@ -90,3 +92,47 @@ class ToggleFollowUserView(APIView):
             logged_in_user.logged_in_user_following.add(target_user)
             target_user.logged_in_user_followers.add(logged_in_user)
             return Response({'status': 'User followed'})
+
+
+class ToggleFriendRequestView(APIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsOnlyAuthenticatedUser]
+
+    def post(self, request, id):
+        target_user_id = id
+        user = request.user
+        friend_request_exist = FriendRequest.objects.filter(Q(from_user_id=user.id) & Q(to_user_id=target_user_id)).exists()
+        if friend_request_exist:
+            FriendRequest.objects.filter(Q(from_user_id=user.id) & Q(to_user_id=target_user_id)).delete()
+            return Response({'status': 'Request deleted'})
+        else:
+            FriendRequest.objects.create(from_user_id=user.id, to_user_id=target_user_id, status="P")
+            return Response({'status': 'Request sent'})
+
+
+class UpdateFriendRequestView(RetrieveUpdateDestroyAPIView):
+    queryset = FriendRequest.objects.all()
+    serializer_class = FriendRequestSerializer
+    lookup_field = 'id'
+    permission_classes = [IsOnlyAuthenticatedUser]
+
+    def patch(self, request, *args, **kwargs):
+        friend_request = self.get_object()
+        action = request.data['status']
+        friend_request.status = action
+        friend_request.save()
+        if action == 'A':
+            user_id = friend_request.to_user_id
+            friend_id = friend_request.from_user_id
+            user = User.objects.filter(id=user_id)
+            friend = User.objects.filter(id=friend_id)
+            user.get().list_of_friends.add(friend.first())
+            return Response({'status': 'Request accepted'})
+
+
+class FriendsListView(ListAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return self.request.user.befriended_by.all()
