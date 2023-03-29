@@ -1,10 +1,10 @@
 # flake8: noqa
-from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from user.permissions import IsNotSameUser, IsOnlyAuthenticatedUser
+from user.permissions import IsNotSameUser, IsOnlyAuthenticatedUser, IsSameUser
 from user.serializer import UserSerializer, UserUpdateSerializer
 from django.contrib.auth import get_user_model
 
@@ -12,6 +12,15 @@ User = get_user_model()
 
 
 # Create your views here.
+
+class MyUserRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsSameUser]
+
+    def get_object(self):
+        return self.request.user
+
+
 class UserListView(ListAPIView):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
@@ -33,7 +42,7 @@ class UserSearchView(ListAPIView):
         return queryset
 
 
-class UserRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
+class UserRetrieveUpdateDestroyView(RetrieveAPIView):
     queryset = User.objects.all()
     lookup_field = 'id'
     permission_classes = [IsAuthenticated, IsNotSameUser]
@@ -70,12 +79,14 @@ class ToggleFollowUserView(APIView):
     def post(self, request, id):
         target_user_id = id
         target_user = User.objects.filter(id=target_user_id).first()
-        user = request.user
-        is_following = user.logged_in_user_following.filter(id=target_user_id).exists()
+        logged_in_user = request.user
+        is_following = logged_in_user.logged_in_user_following.filter(id=target_user_id).exists()
 
         if is_following:
-            user.logged_in_user_following.remove(target_user)
+            logged_in_user.logged_in_user_following.remove(target_user)
+            target_user.logged_in_user_followers.remove(logged_in_user)
             return Response({'status': 'User unfollowed'})
         else:
-            user.logged_in_user_following.add(target_user)
+            logged_in_user.logged_in_user_following.add(target_user)
+            target_user.logged_in_user_followers.add(logged_in_user)
             return Response({'status': 'User followed'})

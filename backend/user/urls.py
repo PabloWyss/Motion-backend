@@ -1,11 +1,12 @@
 from django.urls import path
 
 from user.views import UserListView, UserRetrieveUpdateDestroyView, UserSearchView, ToggleFollowUserView, \
-    FollowerListView, FollowingListView
+    FollowerListView, FollowingListView, MyUserRetrieveUpdateDeleteView
 
 urlpatterns = [
     # backend/api/users/
     path("", UserListView.as_view()),
+    path("me/", MyUserRetrieveUpdateDeleteView.as_view()),
     path("<int:id>/", UserRetrieveUpdateDestroyView.as_view()),
     path("?search=<str:search_string>/", UserSearchView.as_view()),
     # backend/api/social/
