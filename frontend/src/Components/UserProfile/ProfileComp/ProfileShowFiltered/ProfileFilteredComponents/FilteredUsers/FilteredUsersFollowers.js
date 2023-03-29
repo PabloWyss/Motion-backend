@@ -20,7 +20,7 @@ const FilteredUsersFollowers = (props) => {
 
     let userList = [];
 
-    await fetch('https://motion.propulsion-home.ch/backend/api/social/followers/followers', requestOptions)
+    await fetch('https://motion-team2.propulsion-learn.ch/backend/api/social/followers/followers', requestOptions)
       .then((response) => response.json())
       .then((result) => (userList = result.results))
       .catch((error) => console.log("error", error));

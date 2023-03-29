@@ -30,7 +30,7 @@ const UserFindFriendInfo = (prop) => {
           headers: myHeaders,
           redirect: 'follow'
         };
-        fetch("https://motion.propulsion-home.ch/backend/api/social/followers/toggle-follow/"+userid+"/", requestOptions)
+        fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/followers/toggle-follow/"+userid+"/", requestOptions)
           .then(response => response.text())
           .catch(error => console.log('error', error));
       
@@ -47,7 +47,7 @@ const UserFindFriendInfo = (prop) => {
           redirect: 'follow'
         };
         
-        fetch("https://motion.propulsion-home.ch/backend/api/social/friends/request/"+userid+"/", requestOptions)
+        fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/friends/request/"+userid+"/", requestOptions)
           .then(response => response.json())
           .catch(error => console.log('error', error));
       
@@ -124,7 +124,7 @@ export default UserFindFriendInfo
 //     "last_name": "Bob",
 //     "username": "Billy",
 //     "job": "Coffee drinker",
-//     "avatar": "https://motion.propulsion-home.ch/media-files/schrimp_man_TKoKgA3.jpg",
+//     "avatar": "https://motion-team2.propulsion-learn.ch/media-files/schrimp_man_TKoKgA3.jpg",
 //     "banner": null,
 //     "location": "Zürich",
 //     "phone_number": "",
