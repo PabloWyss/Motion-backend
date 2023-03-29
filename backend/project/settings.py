@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'post',
     'registrationprofile',
     'user',
+    'comment',
 
     'rest_framework',
     'drf_yasg',

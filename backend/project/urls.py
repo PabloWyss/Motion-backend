@@ -43,4 +43,7 @@ urlpatterns = [
 
     path("backend/api/auth/", include('registrationprofile.urls')),
 
+
+    path("backend/api/comments/", include('comment.urls')),
+
 ]
