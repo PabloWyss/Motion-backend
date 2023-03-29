@@ -8,6 +8,8 @@ from post.permissions import IsSameUser
 from post.serializers import PostSerializer
 from django.contrib.auth import get_user_model
 
+from post_image.models import Attachment
+
 User = get_user_model()
 
 
@@ -36,6 +38,9 @@ class ListCreatePostView(ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
+        images = self.request.FILES.getlist('image')
+        for image in images:
+            Attachment.objects.create(post_id=serializer.instance.id, image=image)
 
 
 class RetrieveUpdateDeletePostView(RetrieveUpdateDestroyAPIView):
