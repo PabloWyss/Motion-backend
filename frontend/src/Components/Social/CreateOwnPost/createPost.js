@@ -39,7 +39,7 @@ const CreatePost = (props) => {
 
     try {
       const response = await fetch(
-        "https://motion.propulsion-home.ch/backend/api/social/posts/",
+        "https://motion-team2.propulsion-learn.ch/backend/api/social/posts/",
         {
           method: "POST",
           headers: myHeaders,

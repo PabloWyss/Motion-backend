@@ -23,7 +23,7 @@ const Posts = () => {
       redirect: "follow",
     };
 
-    await fetch("https://motion.propulsion-home.ch/backend/api/users/me/", requestOptions)
+    await fetch("https://motion-team2.propulsion-learn.ch/backend/api/users/me/", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         dispatch(setCurrentUser(result))

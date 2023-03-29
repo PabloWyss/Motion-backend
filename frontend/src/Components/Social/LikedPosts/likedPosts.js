@@ -21,7 +21,7 @@ import PostRender from "../PostRender/postRender";
 
 
     await fetch(
-      "https://motion.propulsion-home.ch/backend/api/social/posts/likes/",
+      "https://motion-team2.propulsion-learn.ch/backend/api/social/posts/likes/",
       requestOptions).then((response) => response.json())
       .then((result) => setOwnPosts(result.results))
       .catch((error) => console.log("error", error));
