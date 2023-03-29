@@ -21,7 +21,7 @@ const FilteredUsersFollowing = (props) => {
     let userList = [];
 
     await fetch(
-      "https://motion.propulsion-home.ch/backend/api/social/followers/following",
+      "https://motion-team2.propulsion-learn.ch/backend/api/social/followers/following",
       requestOptions
     )
       .then((response) => response.json())

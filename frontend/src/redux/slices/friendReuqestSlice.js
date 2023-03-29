@@ -12,7 +12,7 @@ export const fetchFriendRequests = createAsyncThunk(
           headers: myHeaders,
         };
         myHeaders.append("Authorization", `Bearer ${Token}`);
-        return fetch("https://motion.propulsion-home.ch/backend/api/social/friends/requests/",requestOptions)
+        return fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/friends/requests/",requestOptions)
             .then((response) => response.json())
             .catch((error) => console.log(error))
       }

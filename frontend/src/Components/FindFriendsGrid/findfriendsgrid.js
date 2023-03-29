@@ -48,7 +48,7 @@ const FindFirendsGrid = () => {
       
       let userList = []
 
-      await fetch(`https://motion.propulsion-home.ch/backend/api/users/?limit=${limit}&offset=${offset}`, requestOptions)
+      await fetch(`https://motion-team2.propulsion-learn.ch/backend/api/users/?limit=${limit}&offset=${offset}`, requestOptions)
         .then(response => response.json())
         .then(result => {
           userList = result.results})

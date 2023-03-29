@@ -25,7 +25,7 @@ function FollowAddButtons(props) {
       redirect: "follow",
     };
     fetch(
-      "https://motion.propulsion-home.ch/backend/api/social/followers/toggle-follow/" +
+      "https://motion-team2.propulsion-learn.ch/backend/api/social/followers/toggle-follow/" +
         userid +
         "/",
       requestOptions
@@ -45,7 +45,7 @@ function FollowAddButtons(props) {
     };
 
     fetch(
-      "https://motion.propulsion-home.ch/backend/api/social/friends/request/" + userid + "/",
+      "https://motion-team2.propulsion-learn.ch/backend/api/social/friends/request/" + userid + "/",
       requestOptions
     )
       .then((response) => response.json())

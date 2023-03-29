@@ -11,7 +11,7 @@ const LikePost = async (Token,postID) => {
           headers: myHeaders,
         };
       
-      await fetch(`https://motion.propulsion-home.ch/backend/api/social/posts/toggle-like/${postID}/`, requestOptions)
+      await fetch(`https://motion-team2.propulsion-learn.ch/backend/api/social/posts/toggle-like/${postID}/`, requestOptions)
         .then(response => response.json())
         .catch(error => console.log('error', error));
           

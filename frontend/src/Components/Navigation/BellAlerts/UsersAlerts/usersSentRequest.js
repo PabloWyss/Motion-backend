@@ -41,7 +41,7 @@ const UsersSentRequest = (prop) => {
           redirect: 'follow'
         };
         
-       await fetch("https://motion.propulsion-home.ch/backend/api/social/friends/requests/"+friend_request_id, requestOptions)
+       await fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/friends/requests/"+friend_request_id, requestOptions)
           .then(response => response.json())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
