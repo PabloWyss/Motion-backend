@@ -5,4 +5,3 @@ urlpatterns = [
     path('comments/', CommentListCreateView.as_view()),
     path('comments/<int:pk>/', ListCommentByIdView.as_view()),
 ]
-
