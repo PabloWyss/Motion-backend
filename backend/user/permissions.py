@@ -5,6 +5,7 @@ class IsNotSameUser(BasePermission):
     def has_object_permission(self, request, view, obj):
         return bool(obj != request.user)
 
+
 class IsSameUser(BasePermission):
     def has_object_permission(self, request, view, obj):
         return bool(obj == request.user)
