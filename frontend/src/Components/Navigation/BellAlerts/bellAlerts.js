@@ -42,7 +42,7 @@ const BellAlerts = () => {
                 </TitleSentAndReceived>
                 </NavigationBellLi>
                 <NavigationBellinnerUL>
-                {requestedToUser.map((elementId)=>{
+                {requestedToUser?.map((elementId)=>{
                     return (
                         <UsersSentRequest key={elementId.id} requester={elementId.requester} requestId = {elementId.id}/>
                     )
@@ -54,7 +54,7 @@ const BellAlerts = () => {
                 </TitleSentAndReceived>
                 </NavigationBellLi>
                 <NavigationBellinnerUL>
-                {requestedByUser.map((elementId)=>{
+                {requestedByUser?.map((elementId)=>{
                     return (
                         <UsersReceivedRequest key={elementId.id} receiver={elementId.receiver} requestId = {elementId.id}/>
                     )

@@ -36,7 +36,7 @@ import PostRender from "../PostRender/postRender";
   return (
     <MainContainer>
       <GridDiv>
-        {ownPosts.map((post) => {
+        {ownPosts?.map((post) => {
           return <PostRender key={uuid()} ownPosts={post} />;
         })}
       </GridDiv>

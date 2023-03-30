@@ -98,14 +98,14 @@ const PostRender = (props) => {
         </FlexRowWrapper>
         {moreThenOneImage ? (
           <PictureGrid>
-            {props.ownPosts.images.map((image) => {
+            {props.ownPosts.images?.map((image) => {
               return (
                 <GridImage key={uuid()} src={image.image} alt={image.image} />
               );
             })}
           </PictureGrid>
         ) : (
-          props.ownPosts.images.map((image) => {
+          props.ownPosts.images?.map((image) => {
             return (
               <PostImage key={uuid()} src={image.image} alt={image.image} />
             );
