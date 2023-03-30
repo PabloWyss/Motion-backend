@@ -28,7 +28,10 @@ const OwnPosts = () => {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => setOwnPosts(result.results))
+      .then((result) => {
+        console.log(result)
+        setOwnPosts(result.results)
+      })
       .catch((error) => console.log("error", error));
   };
 
@@ -43,7 +46,7 @@ const OwnPosts = () => {
     return (
       <MainContainer>
         <GridDiv>
-          {ownPosts.map((post) => {
+          {ownPosts?.map((post) => {
             return <PostRender key={uuid()} ownPosts={post} />;
           })}
         </GridDiv>

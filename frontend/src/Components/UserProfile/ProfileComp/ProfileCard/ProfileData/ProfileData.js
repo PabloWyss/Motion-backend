@@ -34,7 +34,7 @@ function ProfileData(props) {
       <ProfileDataRight>
         <p>Things I like</p>
         <LikedElementsDiv>
-          {props.userdata.things_user_likes.map((element) => {
+          {props.userdata.things_user_likes?.map((element) => {
             return (
               <LikedIndivualElementDiv key={uuid()}>
                 <LikedIndivualElementP>{element}</LikedIndivualElementP>
