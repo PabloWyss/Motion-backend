@@ -33,11 +33,8 @@ import { v4 as uuid } from "uuid";
 const PostRender = (props) => {
   const moreThenOneImage = props.ownPosts.images.length > 1;
   const userData = useSelector((state) => state.currentuser.currentuser)
-  
-  // const [editAllow, setEditAllow] = useState(false)
   let editAllow = false
-  // console.log(userData.id)
-  // console.log(props.ownPosts.user.id)
+
 
   const [postIsLiked,setPostIsLiked] = useState(props.ownPosts.logged_in_user_liked)
   const [amountOfLikes,setAmountOfLikes] = useState(props.ownPosts.amount_of_likes)

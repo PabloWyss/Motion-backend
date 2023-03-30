@@ -22,10 +22,8 @@ import {
 function SignInRight() {
   const [userEmail, setEmail] = useState("");
   const [userPassword, setPassword] = useState("");
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
   const dispatch = useDispatch();
-  
   const [error, setError] = useState('');
 
 
@@ -68,29 +66,16 @@ function SignInRight() {
       );;
       
      
-
-    //console.log("68: "+emessage);
-      if (!emessage) 
+      if (!emessage)
       {
         navigate("/posts");
         localStorage.setItem("auth-token", response.data.access);
-        console.log("auth-token :"+response.data.access);
-      
         dispatch(setCurrentUser(response.data.access))
-        ////return;
       }
-      else
-      {
-       
-          alert('Please check your username and password!')
-        
+      else {
+        alert('Please check your username and password!')
       }
-     
     }
-
-
-     
-    
   };
 
   //navigate to sign up page

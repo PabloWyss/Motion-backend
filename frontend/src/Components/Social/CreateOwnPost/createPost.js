@@ -47,12 +47,9 @@ const CreatePost = (props) => {
           redirect: "follow",
         }
       );
-
-      console.log("File upload response:", response);
     } catch (error) {
       console.error("Error uploading file:", error);
     }
-
     document.forms[0].submit();
   };
 
@@ -73,7 +70,6 @@ const CreatePost = (props) => {
 
       fileReader.onload = (event) => {
         newPictures.push(event.target.result);
-        console.log(event.target.result);
         setPictures([...newPictures]);
       };
     }

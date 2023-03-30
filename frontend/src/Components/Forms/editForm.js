@@ -35,8 +35,6 @@ const EditForm = (props) => {
   };
   
   const moreThenOneImage = props.postDetails.images.length > 1;
-  // console.log(props.edit)
-  // console.log(props.postDetails.user.avatar)
   return (
     <div className="EditForm">
       <OverlayButton onClick={toggleOverlay}>

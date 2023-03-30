@@ -15,9 +15,8 @@ const FindFirendsGrid = () => {
     useEffect(() => {
       const handleScroll = (event) => {
         const {scrollHeight, scrollTop, clientHeight} = event.target;
-        const scrolheigjt = event.target.scrollHeight
-        console.log(scrolheigjt)
-        
+        const scrollheight = event.target.scrollHeight
+
         if (Math.abs(scrollHeight - clientHeight - scrollTop) < 1) {
           console.log('scrolled');
         }
