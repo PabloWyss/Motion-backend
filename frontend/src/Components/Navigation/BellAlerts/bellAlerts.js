@@ -23,14 +23,14 @@ const BellAlerts = () => {
         const listOfRequests = request.requests
         const requestKeys = Object.keys(listOfRequests)
         requestKeys.forEach((idElement)=>{
-        if(listOfRequests[idElement].id == myID) {
+        if(listOfRequests[idElement].id != myID & !listOfRequests[idElement].logged_in_user_sent_fr.includes(myID)) {
             requestedByUser.push(listOfRequests[idElement])
-        } else if (listOfRequests[idElement].logged_in_user_sent_fr.includes(myID)) {
-            requestedToUser.push(listOfRequests[idElement].id)
+        }
+        if (listOfRequests[idElement].logged_in_user_sent_fr.includes(myID)) {
+            requestedToUser.push(listOfRequests[idElement])
         } 
         })
     }
-    console.log(requestedToUser)
     console.log(requestedByUser)
     return (
         <NavigationBellInnerdiv>
