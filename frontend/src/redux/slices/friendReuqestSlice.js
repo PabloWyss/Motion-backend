@@ -40,8 +40,6 @@ export const friendRequestSlice = createSlice({
     })
 }
 
-  
-
 });
 export const { setRequests,  } = friendRequestSlice.actions;
 export default friendRequestSlice.reducer;

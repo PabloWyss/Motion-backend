@@ -110,11 +110,9 @@ function VerificationRight() {
         )
         .catch((error) => (emessage = error.message));
 
-      //console.log("68: "+emessage);
       if (!emessage) {
         //redirect to login page
         navigate("/signin");
-
         return;
       } else {
         alert(emessage);

@@ -53,16 +53,10 @@ function SignUpRight() {
       JSON.stringify({
         email: userEmail,
       })
-    ).catch(error => 
-     
+    ).catch(error =>
       emessage=error.message,
-      
-    
       );;
-      
-  
-    //console.log(emessage);
-   
+
       if (!emessage) 
       {
         navigate("/congratulations");
@@ -73,15 +67,9 @@ function SignUpRight() {
       }
       else
       {
-       
           alert('Please check your email')
-        
       }
     }
-
-
-
-  
   };
 
   //navigate to sign in page

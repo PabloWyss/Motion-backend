@@ -7,7 +7,6 @@ export const postsFilter = createSlice({
   },
   reducers: {
     setpostsFilter: (state, action) => {
-      console.log("slices....."+action.payload);
       state.postsFilter = action.payload;
     },
   },
