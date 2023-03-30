@@ -69,8 +69,8 @@ const SearchAndFilterBar = () => {
     
     fetch("https://motion-team2.propulsion-learn.ch/backend/api/social/posts/likes/", requestOptions)
       .then(response => response.json())
-      //.then(result => dispatch(setpostFilter(result.results)))
-      .then(result => dispatch(setpostsFilter(result.results)))
+      //.then(result => dispatch(setpostFilter(result)))
+      .then(result => dispatch(setpostsFilter(result)))
       .catch(error => console.log('error', error));
   }
 

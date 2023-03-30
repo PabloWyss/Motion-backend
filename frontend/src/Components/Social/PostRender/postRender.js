@@ -31,6 +31,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 const PostRender = (props) => {
+  console.log(props)
   const moreThenOneImage = props.ownPosts.images.length > 1;
   const userData = useSelector((state) => state.currentuser.currentuser)
   let editAllow = false
@@ -98,14 +99,14 @@ const PostRender = (props) => {
         </FlexRowWrapper>
         {moreThenOneImage ? (
           <PictureGrid>
-            {props.ownPosts.images.map((image) => {
+            {props.ownPosts.images?.map((image) => {
               return (
                 <GridImage key={uuid()} src={image.image} alt={image.image} />
               );
             })}
           </PictureGrid>
         ) : (
-          props.ownPosts.images.map((image) => {
+          props.ownPosts.images?.map((image) => {
             return (
               <PostImage key={uuid()} src={image.image} alt={image.image} />
             );

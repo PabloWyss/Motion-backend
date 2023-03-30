@@ -25,7 +25,7 @@ const FilteredUsersFollowing = (props) => {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => (userList = result.results))
+      .then((result) => (userList = result))
       .catch((error) => console.log("error", error));
 
     setListOfUsers2(userList);
@@ -37,7 +37,7 @@ const FilteredUsersFollowing = (props) => {
   return (
     <FindFriednsPageDiv>
       <GridDiv>
-        {listOfUsers2.map((user) => {
+        {listOfUsers2?.map((user) => {
           return <UserFindFriendInfo key={uuid()} userInfo={user} />;
         })}
       </GridDiv>

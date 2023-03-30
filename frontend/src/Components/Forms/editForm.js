@@ -58,7 +58,7 @@ const EditForm = (props) => {
             </FlexRowWrapper>
             {moreThenOneImage ? (
               <PictureGrid>
-                {props.postDetails.images.map((image) => {
+                {props.postDetails.images?.map((image) => {
                   return (
                     <GridImage
                       key={uuid()}
@@ -69,7 +69,7 @@ const EditForm = (props) => {
                 })}
               </PictureGrid>
             ) : (
-              props.postDetails.images.map((image) => {
+              props.postDetails.images?.map((image) => {
                 return (
                   <PostImage key={uuid()} src={image.image} alt={image.image} />
                 );

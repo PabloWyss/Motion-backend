@@ -22,7 +22,7 @@ const FilteredUsersFollowers = (props) => {
 
     await fetch('https://motion-team2.propulsion-learn.ch/backend/api/social/followers/followers', requestOptions)
       .then((response) => response.json())
-      .then((result) => (userList = result.results))
+      .then((result) => (userList = result))
       .catch((error) => console.log("error", error));
 
     setListOfUsers2(userList);
@@ -34,7 +34,7 @@ const FilteredUsersFollowers = (props) => {
   return (
     <FindFriednsPageDiv>
       <GridDiv>
-        {listOfUsers2.map((user) => {
+        {listOfUsers2?.map((user) => {
           return <UserFindFriendInfo key={uuid()} userInfo={user} />;
         })}
       </GridDiv>

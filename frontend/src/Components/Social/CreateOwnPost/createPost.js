@@ -95,7 +95,7 @@ const CreatePost = (props) => {
             </ContentWrapperDiv>
           </RowWrapperDiv>
           <PictureGrid>
-            {pictures.map((picture, index) => (
+            {pictures?.map((picture, index) => (
               <img
                 key={index}
                 src={picture}

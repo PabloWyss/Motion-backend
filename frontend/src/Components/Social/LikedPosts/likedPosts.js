@@ -23,7 +23,7 @@ import PostRender from "../PostRender/postRender";
     await fetch(
       "https://motion-team2.propulsion-learn.ch/backend/api/social/posts/likes/",
       requestOptions).then((response) => response.json())
-      .then((result) => setOwnPosts(result.results))
+      .then((result) => setOwnPosts(result))
       .catch((error) => console.log("error", error));
     
   };
