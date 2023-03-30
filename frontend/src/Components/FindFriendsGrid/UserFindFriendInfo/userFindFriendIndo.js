@@ -8,12 +8,14 @@ import tickerImage from "../../../assets/svgs/Ticker.svg"
 import avatarImage from "../../../assets/svgs/avatar.svg"
 import { useNavigate } from "react-router-dom"
 import clock from "../../../assets/svgs/Groupclock.svg"
+import {useSelector} from "react-redux";
 
 const UserFindFriendInfo = (prop) => {
-    
-    const [FolowUser,setFollowUser] = useState(prop.userInfo.logged_in_user_is_following)
-    const [addFriend,setAddFriend] = useState(prop.userInfo.logged_in_user_sent_fr)
-    const addFriendStatus = prop.userInfo.logged_in_user_is_friends
+
+    const userData = useSelector((state) => state.currentuser.currentuser)
+    const [FolowUser,setFollowUser] = useState(prop.userInfo.logged_in_user_followers.includes(userData.id))
+    const [addFriend,setAddFriend] = useState(prop.userInfo.logged_in_user_sent_fr.includes(userData.id))
+    const addFriendStatus = prop.userInfo.list_of_friends.includes(userData.id)
     const navigate = useNavigate()
 
     const Token = localStorage.getItem("auth-token")
@@ -70,7 +72,7 @@ const UserFindFriendInfo = (prop) => {
     const handleClickUser = () => {
         navigate(`/profile/${prop.userInfo.id}`)
     }
-    console.log(prop.userInfo)
+
     return(
         <AddFriendUserDiv >
             <DivImageName onClick={handleClickUser}>
