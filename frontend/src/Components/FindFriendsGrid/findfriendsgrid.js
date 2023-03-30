@@ -64,7 +64,7 @@ const FindFirendsGrid = () => {
     return (
         <FindFriednsPageDiv >
             <GridDiv >
-                {listOfUsers2.map((user)=>{
+                {listOfUsers2?.map((user)=>{
                     return <UserFindFriendInfo key={uuid()} userInfo={user}/>
                 })}
             </GridDiv >

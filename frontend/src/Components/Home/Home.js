@@ -10,6 +10,7 @@ import FindFirends from "../../pages/Find-Friends/find-firends";
 import RouteProtection from "../HOC/RouteProtection";
 import EditProfile from "../../pages/EditProfile/EditProfile";
 
+
 function Home() {
   return (
     <div className="App">
