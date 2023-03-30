@@ -20,7 +20,9 @@ const CreatePostForm = (props) => {
       </OverlayButton>
 
       <Overlay isOpen={isOpen} onClose={toggleOverlay}>
-        <CreatePost input={ props.input} avatar={props.avatar} />
+        <CreatePost input={ props.input} avatar={props.avatar} onSuccess={() => {
+            setIsOpen(false)
+        }} />
       </Overlay>
     </div>
   );

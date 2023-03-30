@@ -8,8 +8,6 @@ const OwnPosts = () => {
   const [ownPosts, setOwnPosts] = useState([]);
   const Token = localStorage.getItem("auth-token");
 
-  
-
   const GetMyPosts = async (offset) => {
     //GET: lists all the posts of all users in chronological order, with a pagination of 25 posts by default. To get the other posts, you should use limit and offset query params as following: /api/social/posts/?limit=<int>&offset=<int>
 
@@ -23,17 +21,13 @@ const OwnPosts = () => {
     };
 
     await fetch(
-      "https://motion-team2.propulsion-learn.ch/backend/api/social/posts/me/?limit=10&offset=" +
-        offset,
+      "https://motion-team2.propulsion-learn.ch/backend/api/social/posts/me/",
       requestOptions
     )
       .then((response) => response.json())
       .then((result) => setOwnPosts(result))
       .catch((error) => console.log("error", error));
   };
-
-
-
 
   useEffect(() => {
     GetMyPosts(0);
