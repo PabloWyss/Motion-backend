@@ -29,6 +29,20 @@ class User(AbstractUser):
     logged_in_user_followers = models.ManyToManyField('self', symmetrical=False, related_name='following')
     logged_in_user_following = models.ManyToManyField('self', symmetrical=False, related_name='followers')
 
+    logged_in_user_sent_fr = models.ManyToManyField('self', through="FriendRequest")
+    list_of_friends = models.ManyToManyField('User', related_name='befriended_by')
 
-def __str__(self):
-    return self.username
+    def __str__(self):
+        return self.username
+
+
+class FriendRequest(models.Model):
+    STATUSTYPES = [
+        ('A', 'Accepted'),
+        ('P', 'Pending'),
+        ('R', 'Rejected'),
+    ]
+    created = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(choices=STATUSTYPES, max_length=50)
+    from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sent_fr")
+    to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="received_fr")

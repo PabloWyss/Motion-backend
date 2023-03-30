@@ -70,7 +70,7 @@ const UserFindFriendInfo = (prop) => {
     const handleClickUser = () => {
         navigate(`/profile/${prop.userInfo.id}`)
     }
-
+    console.log(prop.userInfo)
     return(
         <AddFriendUserDiv >
             <DivImageName onClick={handleClickUser}>

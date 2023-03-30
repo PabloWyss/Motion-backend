@@ -40,16 +40,9 @@ const FindFirendsGrid = () => {
         headers: myHeaders,
       };
 
-      let limit = "12"
-      let offset = randomNumber.toString()
-
-
       await fetch(`https://motion-team2.propulsion-learn.ch/backend/api/users`, requestOptions)
         .then(response => response.json())
-        .then(result => {
-            console.log(result)
-            setListOfUsers2(result)
-        })
+        .then(result => setListOfUsers2(result))
         .catch(error => console.log('error', error));
       }
 
