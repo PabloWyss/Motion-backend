@@ -30,7 +30,6 @@ const FindFirendsGrid = () => {
     }, []);
     
     const getUsers = async () => {
-
       const Token = localStorage.getItem("auth-token")
     
       let myHeaders = new Headers();
@@ -41,20 +40,18 @@ const FindFirendsGrid = () => {
         headers: myHeaders,
       };
 
-      let limit = "9"
+      let limit = "12"
       let offset = randomNumber.toString()
 
-      
-      let userList = []
 
-      await fetch(`https://motion-team2.propulsion-learn.ch/backend/api/users/?limit=${limit}&offset=${offset}`, requestOptions)
+      await fetch(`https://motion-team2.propulsion-learn.ch/backend/api/users`, requestOptions)
         .then(response => response.json())
         .then(result => {
-          userList = result.results})
+            console.log(result)
+            setListOfUsers2(result)
+        })
         .catch(error => console.log('error', error));
-
-      setListOfUsers2(userList)
-    }
+      }
 
     useEffect(()=>{
       getUsers()
