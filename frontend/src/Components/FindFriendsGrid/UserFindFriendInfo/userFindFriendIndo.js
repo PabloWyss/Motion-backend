@@ -70,7 +70,7 @@ const UserFindFriendInfo = (prop) => {
     const handleClickUser = () => {
         navigate(`/profile/${prop.userInfo.id}`)
     }
-
+    console.log(prop.userInfo)
     return(
         <AddFriendUserDiv >
             <DivImageName onClick={handleClickUser}>
@@ -96,15 +96,15 @@ const UserFindFriendInfo = (prop) => {
             <AboutMeInfoP>
                 {prop.userInfo.about_me}
             </AboutMeInfoP>
-            {/*<LikedElementsDiv>*/}
-            {/*    {prop.userInfo.things_user_likes.map((element)=>{*/}
-            {/*        return (*/}
-            {/*            <LikedIndivualElementDiv key={uuid()}>*/}
-            {/*                <LikedIndivualElementP>{element}</LikedIndivualElementP>*/}
-            {/*            </LikedIndivualElementDiv>*/}
-            {/*        )*/}
-            {/*    })}*/}
-            {/*</LikedElementsDiv>*/}
+            <LikedElementsDiv>
+                {prop.userInfo.things_user_likes?.map((element)=>{
+                    return (
+                        <LikedIndivualElementDiv key={uuid()}>
+                            <LikedIndivualElementP>{element}</LikedIndivualElementP>
+                        </LikedIndivualElementDiv>
+                    )
+                })}
+            </LikedElementsDiv>
         </AddFriendUserDiv>
         
     )
