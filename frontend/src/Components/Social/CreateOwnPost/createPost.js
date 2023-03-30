@@ -19,7 +19,6 @@ import sendIcon from "../../../assets/svgs/send_button.svg";
 import uploadIcon from '../../../assets/svgs/Shape.svg'
 
 const CreatePost = (props) => {
-  console.log(props)
   const [content, setContent] = useState(props.input);
   const [pictures, setPictures] = useState([]);
   const [images, setImages] = useState([]);
@@ -35,8 +34,10 @@ const CreatePost = (props) => {
     const formData = new FormData();
     formData.append("text", content);
     images.forEach((image) => {
-      formData.append("images", image);
+      formData.append("image", image);
     });
+
+    console.log(formData)
 
     try {
       const response = await fetch(
