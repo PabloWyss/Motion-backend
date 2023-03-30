@@ -45,10 +45,10 @@ const EditForm = (props) => {
         <MainRenderContainer>
           <WrapperDiv>
             <FlexRowWrapper>
-              <Avatar src={props.postDetails.user.avatar} />
+              <Avatar src={props.postDetails.user?.avatar} />
               <HeaderWrapper>
                 <FlexColumnWrapper>
-                  <Name>{`${props.postDetails.user.first_name} ${props.postDetails.user.last_name}`}</Name>
+                  <Name>{`${props.postDetails.user?.first_name} ${props.postDetails.user?.last_name}`}</Name>
                   <Time>Time</Time>
                 </FlexColumnWrapper>
               </HeaderWrapper>

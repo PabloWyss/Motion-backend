@@ -19,6 +19,7 @@ import sendIcon from "../../../assets/svgs/send_button.svg";
 import uploadIcon from '../../../assets/svgs/Shape.svg'
 
 const CreatePost = (props) => {
+  console.log(props)
   const [content, setContent] = useState(props.input);
   const [pictures, setPictures] = useState([]);
   const [images, setImages] = useState([]);
