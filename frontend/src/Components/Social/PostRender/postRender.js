@@ -31,6 +31,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 const PostRender = (props) => {
+  console.log(props)
   const moreThenOneImage = props.ownPosts.images.length > 1;
   const userData = useSelector((state) => state.currentuser.currentuser)
   let editAllow = false
