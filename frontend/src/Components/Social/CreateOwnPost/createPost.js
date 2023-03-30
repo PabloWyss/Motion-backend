@@ -32,7 +32,7 @@ const CreatePost = (props) => {
     myHeaders.append("Authorization", `Bearer ${Token}`);
 
     const formData = new FormData();
-    formData.append("content", content);
+    formData.append("text", content);
     images.forEach((image) => {
       formData.append("images", image);
     });
@@ -44,13 +44,12 @@ const CreatePost = (props) => {
           method: "POST",
           headers: myHeaders,
           body: formData,
-          redirect: "follow",
         }
       );
     } catch (error) {
       console.error("Error uploading file:", error);
     }
-    document.forms[0].submit();
+    props.onSuccess();
   };
 
   const handleContentChange = (e) => {
