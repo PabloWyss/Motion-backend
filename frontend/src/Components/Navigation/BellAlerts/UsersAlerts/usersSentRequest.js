@@ -67,7 +67,7 @@ const UsersSentRequest = (prop) => {
         navigate(`/profile/${prop.requestId}`)
     }
 
-
+    console.log(prop)
     return (
         <BellInnerLi>
           {isClicked?

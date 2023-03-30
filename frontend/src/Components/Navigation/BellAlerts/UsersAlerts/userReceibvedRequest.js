@@ -10,7 +10,7 @@ const UsersReceivedRequest = (prop) => {
     const handleClickUser = () => {
         navigate(`/profile/${prop.receiver.id}`)
     }
-
+    console.log(prop)
     return (
         <BellInnerLi>
             <RequestDiv >
