@@ -90,7 +90,7 @@ const Navigation = () => {
         <Logo src={logo}></Logo>
         <PageTitle>Motion</PageTitle>
           <NavLink
-          to="/"
+          to="/posts"
           style={
             ({ isActive }) =>
             isActive

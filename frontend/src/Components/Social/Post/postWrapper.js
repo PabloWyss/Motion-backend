@@ -8,26 +8,23 @@ import { useSelector } from 'react-redux';
 import LikedPosts from "../LikedPosts/likedPosts";
 import FriendsPosts from "../FriendsPosts/friendsPosts";
 import FollowersPosts from "../FollowersPosts/followersPosts";
+
 const PostWrapper = () => {
 
+    const filter = useSelector((store) => store.postsFilter.postsFilter); //get state from redux
 
-  const filter = useSelector((store) => store.postsFilter.postsFilter); //get state from redux
-
-console.log("PostWrapper..."+filter);
-
-const displayComponent = () => {
-  switch (filter) {
-  
-    case "Liked":
-      return <LikedPosts />;
-      case "Friends":
-        return <FriendsPosts />;
-        case "Follow":
-          return <FollowersPosts />;
-    default:
-      return <OtherPosts />;
-  }
-};
+    const displayComponent = () => {
+      switch (filter) {
+        case "Liked":
+          return <LikedPosts />;
+          case "Friends":
+            return <FriendsPosts />;
+            case "Follow":
+              return <FollowersPosts />;
+        default:
+          return <OtherPosts />;
+      }
+    };
 
   return (
     <MainContainer>

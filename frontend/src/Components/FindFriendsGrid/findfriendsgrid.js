@@ -15,9 +15,8 @@ const FindFirendsGrid = () => {
     useEffect(() => {
       const handleScroll = (event) => {
         const {scrollHeight, scrollTop, clientHeight} = event.target;
-        const scrolheigjt = event.target.scrollHeight
-        console.log(scrolheigjt)
-        
+        const scrollheight = event.target.scrollHeight
+
         if (Math.abs(scrollHeight - clientHeight - scrollTop) < 1) {
           console.log('scrolled');
         }
@@ -31,7 +30,6 @@ const FindFirendsGrid = () => {
     }, []);
     
     const getUsers = async () => {
-
       const Token = localStorage.getItem("auth-token")
     
       let myHeaders = new Headers();
@@ -42,25 +40,15 @@ const FindFirendsGrid = () => {
         headers: myHeaders,
       };
 
-      let limit = "9"
-      let offset = "0"
-
-      
-      let userList = []
-
-      await fetch(`https://motion-team2.propulsion-learn.ch/backend/api/users/?limit=${limit}&offset=${offset}`, requestOptions)
-        .then(response => {
-            return response.json()})
-        .then(result => {
-          userList = result})
+      await fetch(`https://motion-team2.propulsion-learn.ch/backend/api/users`, requestOptions)
+        .then(response => response.json())
+        .then(result => setListOfUsers2(result))
         .catch(error => console.log('error', error));
-      setListOfUsers2(userList)
-    }
+      }
 
     useEffect(()=>{
       getUsers()
     },[])
-    console.log(listOfUsers2[0])
 
     return (
         <FindFriednsPageDiv >
