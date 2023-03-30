@@ -10,7 +10,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['text', 'id', 'created_by', 'created', 'liked_by', 'like_count']
+        fields = '__all__'
 
 
 class PostLijedSerializer(serializers.ModelSerializer):
@@ -18,4 +18,4 @@ class PostLijedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['id', 'text', 'created_by']
+        fields = '__all__'

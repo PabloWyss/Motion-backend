@@ -9,13 +9,13 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email']
+        exclude = ('password', 'is_staff', 'is_active', 'date_joined', 'is_superuser', 'user_permissions')
 
 
 class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'
+        exclude = ('password', 'is_staff', 'is_active', 'date_joined', 'is_superuser', 'user_permissions')
 
 
 class FollowersSerializer(serializers.ModelSerializer):
@@ -23,7 +23,7 @@ class FollowersSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'followed_by']
+        exclude = ('password', 'is_staff', 'is_active', 'date_joined', 'is_superuser', 'user_permissions')
 
 
 class FriendRequestSerializer(serializers.ModelSerializer):
@@ -32,4 +32,4 @@ class FriendRequestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FriendRequest
-        fields = '__all__'
+        exclude = ('password', 'is_staff', 'is_active', 'date_joined', 'is_superuser', 'user_permissions')

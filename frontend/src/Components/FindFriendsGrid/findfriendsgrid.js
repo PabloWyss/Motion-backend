@@ -43,23 +43,24 @@ const FindFirendsGrid = () => {
       };
 
       let limit = "9"
-      let offset = randomNumber.toString()
+      let offset = "0"
 
       
       let userList = []
 
       await fetch(`https://motion-team2.propulsion-learn.ch/backend/api/users/?limit=${limit}&offset=${offset}`, requestOptions)
-        .then(response => response.json())
+        .then(response => {
+            return response.json()})
         .then(result => {
-          userList = result.results})
+          userList = result})
         .catch(error => console.log('error', error));
-
       setListOfUsers2(userList)
     }
 
     useEffect(()=>{
       getUsers()
     },[])
+    console.log(listOfUsers2[0])
 
     return (
         <FindFriednsPageDiv >
