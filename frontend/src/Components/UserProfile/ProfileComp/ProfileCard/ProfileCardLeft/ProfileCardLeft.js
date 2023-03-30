@@ -23,7 +23,7 @@ function ProfileCardLeft(props) {
       <FollowAddButtons userdata={props.userdata}/>
     );
   };
-
+  console.log(props.userdata)
   return (
     <MainContainer>
       {props.userdata.avatar ? (
