@@ -49,7 +49,7 @@ function SignUpRight() {
   
     //registration request to API
     await callAPI.post(
-      "registration/",
+      "auth/registration/",
       JSON.stringify({
         email: userEmail,
       })

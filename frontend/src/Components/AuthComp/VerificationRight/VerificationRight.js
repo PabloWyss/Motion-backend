@@ -97,7 +97,7 @@ function VerificationRight() {
       //registration request to API
       await callAPI
         .patch(
-          "registration/validation/",
+          "auth/registration/validation/",
           JSON.stringify({
             email: userEmail,
             username: userName,

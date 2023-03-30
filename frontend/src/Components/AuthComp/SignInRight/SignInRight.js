@@ -55,7 +55,7 @@ function SignInRight() {
 
     //login request to API
     const response = await callAPI.post(
-      "token/",
+      "auth/token/",
       JSON.stringify({
         email: userEmail,
         password: userPassword,

@@ -45,7 +45,7 @@ const OtherPosts = () => {
   return (
     <MainContainer>
       <GridDiv>
-        {ownPosts.map((post) => {
+        {ownPosts?.map((post) => {
           return <PostRender key={uuid()} ownPosts={post} />;
         })}
       </GridDiv>
