@@ -19,7 +19,7 @@ const BellAlerts = () => {
     const requestedByUser = []
 
     const request = useSelector(store => store.friendRequests)
-    
+    console.log(request)
     if(request.requests.results){
         const listOfRequests = request.requests.results
         const requestKeys = Object.keys(listOfRequests)

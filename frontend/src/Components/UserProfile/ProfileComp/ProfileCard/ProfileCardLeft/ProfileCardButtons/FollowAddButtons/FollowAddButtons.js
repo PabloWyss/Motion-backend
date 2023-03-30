@@ -10,7 +10,7 @@ import tickerImage from "../../../../../../../assets/svgs/Ticker.svg";
 
 function FollowAddButtons(props) {
   
-  const [FolowUser, setFollowUser] = useState(props.userdata.logged_in_user_is_following);
+  const [FolowUser, setFollowUser] = useState(props.userdata.logged_in_user_following);
   const [addFriend, setAddFriend] = useState(props.userdata.logged_in_user_sent_fr);
 
   const Token = localStorage.getItem("auth-token");
