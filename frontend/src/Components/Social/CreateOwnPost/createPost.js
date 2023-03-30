@@ -34,8 +34,10 @@ const CreatePost = (props) => {
     const formData = new FormData();
     formData.append("text", content);
     images.forEach((image) => {
-      formData.append("images", image);
+      formData.append("image", image);
     });
+
+    console.log(formData)
 
     try {
       const response = await fetch(
