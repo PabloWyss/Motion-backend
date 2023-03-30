@@ -144,5 +144,7 @@ class FriendsRequestsListView(ListAPIView):
 
     def get_queryset(self):
         friend_requests_received = FriendRequest.objects.filter(Q(to_user_id=self.request.user.id) & Q(status="P")).all()
+        friend_requests_sent = FriendRequest.objects.filter(Q(from_user_id=self.request.user.id) & Q(status="P")).all()
         id_list = [obj.from_user_id for obj in friend_requests_received]
-        return User.objects.filter(id__in=id_list).all()
+        id_list_sent = [obj.to_user_id for obj in friend_requests_sent]
+        return User.objects.filter(Q(id__in=id_list) | Q(id__in=id_list_sent)).all()

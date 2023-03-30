@@ -19,20 +19,19 @@ const BellAlerts = () => {
     const requestedByUser = []
 
     const request = useSelector(store => store.friendRequests)
-    console.log(request)
-    if(request.requests.results){
-        const listOfRequests = request.requests.results
+    if(request.requests){
+        const listOfRequests = request.requests
         const requestKeys = Object.keys(listOfRequests)
         requestKeys.forEach((idElement)=>{
-        if(listOfRequests[idElement].requester.id == myID && listOfRequests[idElement].status =="P" ) {
+        if(listOfRequests[idElement].id == myID) {
             requestedByUser.push(listOfRequests[idElement])
-        } else if (listOfRequests[idElement].requester.id != myID && listOfRequests[idElement].status =="P" ) {
-            requestedToUser.push(listOfRequests[idElement])
+        } else if (listOfRequests[idElement].logged_in_user_sent_fr.includes(myID)) {
+            requestedToUser.push(listOfRequests[idElement].id)
         } 
         })
     }
-
-
+    console.log(requestedToUser)
+    console.log(requestedByUser)
     return (
         <NavigationBellInnerdiv>
             <NavigationBellUl>
@@ -44,7 +43,7 @@ const BellAlerts = () => {
                 <NavigationBellinnerUL>
                 {requestedToUser?.map((elementId)=>{
                     return (
-                        <UsersSentRequest key={elementId.id} requester={elementId.requester} requestId = {elementId.id}/>
+                        <UsersSentRequest key={elementId.id} requester={elementId} requestId = {elementId.id}/>
                     )
                 })}
                 </NavigationBellinnerUL>
@@ -56,7 +55,7 @@ const BellAlerts = () => {
                 <NavigationBellinnerUL>
                 {requestedByUser?.map((elementId)=>{
                     return (
-                        <UsersReceivedRequest key={elementId.id} receiver={elementId.receiver} requestId = {elementId.id}/>
+                        <UsersReceivedRequest key={elementId.id} receiver={elementId} requestId = {elementId.id}/>
                     )
                 })}
                 </NavigationBellinnerUL>
