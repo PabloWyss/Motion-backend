@@ -36,8 +36,8 @@ const PostRender = (props) => {
   let editAllow = false
 
 
-  const [postIsLiked,setPostIsLiked] = useState(props.ownPosts.logged_in_user_liked)
-  const [amountOfLikes,setAmountOfLikes] = useState(props.ownPosts.amount_of_likes)
+  const [postIsLiked,setPostIsLiked] = useState(props.ownPosts.liked_by.includes(userData))
+  const [amountOfLikes,setAmountOfLikes] = useState(props.ownPosts.like_count)
   const currentUserToken = localStorage.getItem("auth-token")
   const navigate = useNavigate()
 
@@ -98,14 +98,14 @@ const PostRender = (props) => {
         </FlexRowWrapper>
         {moreThenOneImage ? (
           <PictureGrid>
-            {props.ownPosts.images.map((image) => {
+            {props.ownPosts.images?.map((image) => {
               return (
                 <GridImage key={uuid()} src={image.image} alt={image.image} />
               );
             })}
           </PictureGrid>
         ) : (
-          props.ownPosts.images.map((image) => {
+          props.ownPosts.images?.map((image) => {
             return (
               <PostImage key={uuid()} src={image.image} alt={image.image} />
             );

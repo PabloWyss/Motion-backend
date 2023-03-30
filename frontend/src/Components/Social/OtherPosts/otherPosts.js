@@ -30,7 +30,7 @@ const OtherPosts = () => {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => setOwnPosts(result.results))
+      .then((result) => setOwnPosts(result))
       .catch((error) => console.log("error", error));
   };
 

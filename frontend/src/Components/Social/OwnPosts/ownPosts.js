@@ -25,9 +25,7 @@ const OwnPosts = () => {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => {
-        setOwnPosts(result)
-      })
+      .then((result) => setOwnPosts(result))
       .catch((error) => console.log("error", error));
   };
 
