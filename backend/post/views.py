@@ -30,7 +30,7 @@ class ListCreatePostView(ListCreateAPIView):
     Lists all the posts of all users in chronological order
     """
     serializer_class = PostSerializer
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-created')
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [filters.OrderingFilter]
     ordering_fields = ['created']
@@ -108,4 +108,4 @@ class ListMyPostsView(ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return self.request.user.posts.all()
+        return self.request.user.posts.all().order_by('-created')
