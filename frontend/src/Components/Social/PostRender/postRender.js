@@ -31,35 +31,34 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 const PostRender = (props) => {
-  console.log(props)
   const moreThenOneImage = props.ownPosts.images.length > 1;
   const userData = useSelector((state) => state.currentuser.currentuser)
   let editAllow = false
 
 
-  const [postIsLiked,setPostIsLiked] = useState(props.ownPosts.logged_in_user_liked)
-  const [amountOfLikes,setAmountOfLikes] = useState(props.ownPosts.amount_of_likes)
+  const [postIsLiked,setPostIsLiked] = useState(props.ownPosts.liked_by.includes(userData))
+  const [amountOfLikes,setAmountOfLikes] = useState(props.ownPosts.like_count)
   const currentUserToken = localStorage.getItem("auth-token")
   const navigate = useNavigate()
 
   const handleClickUser = () => {
-    if(props.ownPosts.user.id == userData.id) {
+    if(props.ownPosts.created_by.id == userData.id) {
       navigate(`/profile/`)
     } else{
-      navigate(`/profile/${props.ownPosts.user.id}`)
+      navigate(`/profile/${props.ownPosts.created_by.id}`)
     }
   }
 
   let avatar = "";
-  if (props.ownPosts.user.avatar === null) {
+  if (props.ownPosts.created_by.avatar === null) {
     avatar =
       "https://t4.ftcdn.net/jpg/03/59/58/91/360_F_359589186_JDLl8dIWoBNf1iqEkHxhUeeOulx0wOC5.jpg";
   } else {
-    avatar = props.ownPosts.user.avatar;
+    avatar = props.ownPosts.created_by.avatar;
   }
 
   const handleEditAllow = () => {
-    return (userData.id !== props.ownPosts.user.id ? editAllow : (editAllow = !editAllow))
+    return (userData.id !== props.ownPosts.created_by.id ? editAllow : (editAllow = !editAllow))
   }
 
 
@@ -82,7 +81,7 @@ const PostRender = (props) => {
           <Avatar src={avatar} onClick={handleClickUser}/>
           <HeaderWrapper>
             <FlexColumnWrapper>
-              <Name onClick={handleClickUser}>{`${props.ownPosts.user.first_name} ${props.ownPosts.user.last_name}`}</Name>
+              <Name onClick={handleClickUser}>{`${props.ownPosts.created_by.first_name} ${props.ownPosts.created_by.last_name}`}</Name>
               <Time>
                 <ReactTimeAgo date={props.ownPosts.created} locale="en-US" />
               </Time>
@@ -95,7 +94,7 @@ const PostRender = (props) => {
           />
         </FlexRowWrapper>
         <FlexRowWrapper>
-          <PostText>{props.ownPosts.content}</PostText>
+          <PostText>{props.ownPosts.text}</PostText>
         </FlexRowWrapper>
         {moreThenOneImage ? (
           <PictureGrid>
